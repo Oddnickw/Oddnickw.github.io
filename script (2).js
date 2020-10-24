@@ -12,7 +12,10 @@ var previousCommands = {
 
 window.onload = function(){
     
-    document.querySelector("#command").onkeypress = function(e){
+
+    println("nick is bad at JS maybe most likely")
+
+    /*document.querySelector("#command").onkeypress = function(e){
         
 		//If specialKey remains true, cancel its regular action
         var specialKey = true;
@@ -31,6 +34,7 @@ window.onload = function(){
         if(specialKey)e.preventDefault();
         
     };
+    */
     
 };
 

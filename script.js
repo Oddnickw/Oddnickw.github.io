@@ -12,7 +12,7 @@ var previousCommands = {
 
 window.onload = function(){
     
-
+    testypants()
     println("nick is bad at JS maybe most likely")
 
     /*document.querySelector("#command").onkeypress = function(e){

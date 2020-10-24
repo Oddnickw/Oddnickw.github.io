@@ -13,27 +13,27 @@ var previousCommands = {
 };
 
 window.onload = function () {
-  testypants();
   println("nick is bad at JS maybe most likely");
-  /*document.querySelector("#command").onkeypress = function(e){
-      
-  //If specialKey remains true, cancel its regular action
-      var specialKey = true;
-         switch(e.keyCode){
-  //Keypress was enter, submit, clear, and cancel regular enter action.
-          case 13:
-              submit(document.querySelector("#command").value);
-              previousCommands.vals.push($(this).val());
-              document.querySelector("#command").value = "";
-              break;
-          default:
-              specialKey = false;
-      }
-      
-      if(specialKey)e.preventDefault();
-      
+  testypants();
+
+  document.querySelector("#command").onkeypress = function (e) {
+    //If specialKey remains true, cancel its regular action
+    var specialKey = true;
+
+    switch (e.keyCode) {
+      //Keypress was enter, submit, clear, and cancel regular enter action.
+      case 13:
+        submit(document.querySelector("#command").value);
+        previousCommands.vals.push($(this).val());
+        document.querySelector("#command").value = "";
+        break;
+
+      default:
+        specialKey = false;
+    }
+
+    if (specialKey) e.preventDefault();
   };
-  */
 }; //thanks https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript
 
 

@@ -15,7 +15,7 @@ window.onload = function(){
     
     println("nick is bad at JS maybe most likely")
     testypants()
-    /*document.querySelector("#command").onkeypress = function(e){
+    document.querySelector("#command").onkeypress = function(e){
         
 		//If specialKey remains true, cancel its regular action
         var specialKey = true;
@@ -34,7 +34,6 @@ window.onload = function(){
         if(specialKey)e.preventDefault();
         
     };
-    */
     
 };
 

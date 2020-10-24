@@ -90,8 +90,11 @@ function generateTable() {
     html += "</tr>";
   });
   return html + "</table>";
+<<<<<<< HEAD
 }
 
 function testypants() {
   println("test test testy test");
+=======
+>>>>>>> 6b35e478d1b6d15b6d8f302ca987f8f4d59c20a6
 }

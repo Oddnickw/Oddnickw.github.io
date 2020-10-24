@@ -12,9 +12,9 @@ var previousCommands = {
 
 window.onload = function(){
     
-    testypants()
+    
     println("nick is bad at JS maybe most likely")
-
+    testypants()
     /*document.querySelector("#command").onkeypress = function(e){
         
 		//If specialKey remains true, cancel its regular action

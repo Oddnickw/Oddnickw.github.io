@@ -102,3 +102,7 @@ function generateTable(){
     });
     return html + "</table>";
 }
+function testypants(){
+    println("test test testy test")
+    
+}

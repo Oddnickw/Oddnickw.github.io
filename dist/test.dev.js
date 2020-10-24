@@ -1,3 +1,5 @@
 "use strict";
 
-println("test test testy test");
+function testypants() {
+  println("test test testy test");
+}

@@ -13,8 +13,8 @@ var previousCommands = {
 };
 
 window.onload = function () {
-  println("nick is bad at JS maybe most likely");
-  testypants();
+  console.log(player.location());
+  roomUnpacker();
 
   document.querySelector("#command").onkeypress = function (e) {
     //If specialKey remains true, cancel its regular action
@@ -46,9 +46,10 @@ function submit(command) {
   command = escapeHtml(command);
   command = command.replace("  ", " ");
   command = command.toLowerCase();
-  words = command.split(" "); //Print command onto the screen and a line
+  words = command.split(" ");
+  console.log(words); //Print command onto the screen and a line
 
-  println(span("echoCommand", command));
+  println("> " + span("echoCommand", command));
   println("<hr>", true); //If the first word is a valid command, trigger the associated function
 
   if (commands[words[0]]) {
@@ -90,11 +91,4 @@ function generateTable() {
     html += "</tr>";
   });
   return html + "</table>";
-<<<<<<< HEAD
-}
-
-function testypants() {
-  println("test test testy test");
-=======
->>>>>>> 6b35e478d1b6d15b6d8f302ca987f8f4d59c20a6
 }

@@ -127,10 +127,11 @@ null, //exits
 null, //passage south
 null, //passage West
 null, //passage East
-true, //passage north locked
-false, //passage south locked
-false, //passage West locked
-false);
+[true], //passage north locked
+[false], //passage south locked
+[false], //passage West locked
+[false] //passage East locked
+);
 console.log(starterRoom.description);
 console.log(starterRoom.exits);
 var map = new Array();

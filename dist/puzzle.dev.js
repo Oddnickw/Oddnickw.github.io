@@ -29,3 +29,12 @@ function () {
 
   return puzzle;
 }();
+
+var lockOne = new puzzle();
+/*
+Template 
+    //
+
+
+
+*/

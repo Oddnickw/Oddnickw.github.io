@@ -16,3 +16,18 @@ class puzzle {
     }
 
 }
+
+
+var lockOne = new puzzle(
+    
+
+
+)
+
+/*
+Template 
+    //
+
+
+
+*/

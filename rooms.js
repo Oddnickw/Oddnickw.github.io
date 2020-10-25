@@ -108,10 +108,14 @@ var nextRoom = new Room(
     null,//exits 
     [3,2],//location
     [false],//items
-    "there is a steel door leading north",//passage north
+    "There is a steel door leading north",//passage north
     null,//passage south
     null,//passage West
     null,//passage East
+    [true,//passage north locked
+    [false,//passage south locked
+    [false,//passage West locked
+    [false,//passage East locked
 
 );
 

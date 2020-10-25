@@ -123,10 +123,14 @@ var nextRoom = new Room("boiler Room", //name
 null, //exits 
 [3, 2], //location
 [false], //items
-"there is a steel door leading north", //passage north
+"There is a steel door leading north", //passage north
 null, //passage south
 null, //passage West
-null);
+null, //passage East
+true, //passage north locked
+false, //passage south locked
+false, //passage West locked
+false);
 console.log(starterRoom.description);
 console.log(starterRoom.exits);
 var map = new Array();

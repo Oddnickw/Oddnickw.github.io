@@ -9,31 +9,50 @@ commands = {
                         player.moveNorth()
                         roomUnpacker()
                     }
+                    else{
+                        println("There is no room to the North.")
+                    }
                 }
+                else{ println("there is no room to the North")}
             }
             else if (words == "south"){
-                if (player.location()[0] != 0){
+                if (player.location()[0] != 4){
                     if (southRoom() != null){
                         player.moveSouth()
                         roomUnpacker()
                     }
+                    else{
+                        println("There is no room to the South.")
+                    }
+                    
                 }
+                else{ println("there is no room to the South")}
+                
             }
             else if (words == "west"){
-                if (player.location()[0] != 0){
+                if (player.location()[1] != 0){
                     if (westRoom() != null){
                         player.moveWest()
                         roomUnpacker()
                     }
+                    else{
+                        println("There is no room to the West.")
+                    }
                 }
+                else{ println("there is no room to the West")}
             }
-            else if (words == "west"){
-                if (player.location()[0] != 0){
+            else if (words == "east"){
+                if (player.location()[1] != 4){
                     if (eastRoom() != null){
                         player.moveEast()
                         roomUnpacker()
                     }
+                
+                else{
+                    println("There is no room to the East.")
                 }
+                }
+                else{ println("there is no room to the East")}
             }
             else if (words == ""){
                 println ("you most go in a direction.")

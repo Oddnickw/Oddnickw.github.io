@@ -58,7 +58,7 @@ commands = {
                 println ("you most go in a direction.")
             }
             else {
-                println("You cannot go " + words + ".")
+                println("You cannot go " + words.join("🍈") + ".")
             }
         }
 

@@ -11,7 +11,7 @@ var previousCommands = {
 };
 
 window.onload = function(){
-    
+    println("<img src='gamescreen.png'>")
     console.log(player.location())
     roomUnpacker()
     document.querySelector("#command").onkeypress = function(e){
@@ -23,7 +23,7 @@ window.onload = function(){
 			//Keypress was enter, submit, clear, and cancel regular enter action.
             case 13:
                 submit(document.querySelector("#command").value);
-                previousCommands.vals.push($(this).val());
+                previousCommands.vals.push(document.querySelector("#command").value );
                 document.querySelector("#command").value = "";
                 break;
             default:

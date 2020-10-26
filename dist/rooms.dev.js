@@ -78,7 +78,7 @@ function () {
       }
 
       if (this.items[0] != false) {
-        println("In the room you see" + viewItems);
+        println("In the room you see " + viewItems);
       }
     }
   }, {

@@ -54,7 +54,7 @@ class Room{
         for (let pusher = 1; pusher < this.items.length; pusher++) {
             viewItems.push(this.items[pusher]);
         }
-        if (this.items[0] != false) {println("In the room you see" + viewItems)}
+        if (this.items[0] != false) {println("In the room you see " + viewItems)}
 
     }
 

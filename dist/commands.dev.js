@@ -7,15 +7,21 @@ commands = {
       console.log(words);
 
       if (words == "north") {
-        if (player.location()[0] != 0) {
-          if (northRoom() != null) {
-            player.moveNorth();
-            roomUnpacker();
+        console.log(northRoom().passageNLocked[0]);
+
+        if (northRoom().passageNLocked[0] = false) {
+          if (player.location()[0] != 0) {
+            if (northRoom() != null) {
+              player.moveNorth();
+              roomUnpacker();
+            } else {
+              println("There is no room to the North.");
+            }
           } else {
-            println("There is no room to the North.");
+            println("there is no room to the North");
           }
         } else {
-          println("there is no room to the North");
+          println(northRoom().passageNLocked.description);
         }
       } else if (words == "south") {
         if (player.location()[0] != 4) {

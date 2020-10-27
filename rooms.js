@@ -51,10 +51,12 @@ class Room{
         }
         
         var viewItems = []
-        for (let pusher = 1; pusher < this.items.length; pusher++) {
+        
+        for (let pusher = 1; pusher < this.items.length-1; pusher++) {
             viewItems.push(this.items[pusher]);
         }
-        if (this.items[0] != false) {println("In the room you see " + viewItems)}
+        viewItems.push("and " + this.items[this.items.length-1] + ".")
+        if (this.items[0] != false) {println("In the room you see " + viewItems.join(", "))}
 
     }
 
@@ -92,7 +94,7 @@ var starterRoom = new Room(
     "This room looks like an abandon machine shop. The floor is cluttered with tools and scrap metal.", //Description
     ["north", [3,2]], // exits 
     [4,2],//location
-    [true,"a rusty nail" ], //items
+    [true,"a rusty nail", "a steel door to the north", "some scrap metal on the floor"], //items
     null,//passage north
     "There is a cold and large steel door here",//passage south 
     null,//passage West
@@ -101,6 +103,7 @@ var starterRoom = new Room(
 
 );
 
+var lock = [lockOne]
 
 var nextRoom = new Room(
     "boiler Room",//name
@@ -112,7 +115,7 @@ var nextRoom = new Room(
     null,//passage south
     null,//passage West
     null,//passage East
-    [true],//passage north locked
+    lock[0], //passage north locked
     [false],//passage south locked
     [false],//passage West locked
     [false]//passage East locked

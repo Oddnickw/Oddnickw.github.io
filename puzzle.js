@@ -5,28 +5,22 @@ class puzzle {
         this.solution = solution
         this.solved= solved // always created as false changed to true by solved()
     }
-    
-    solution(){
-        //pretty much just a thing and at the end it runs solved function
-
-
-    }
-    solved(){
-        
-    }
-
 }
 
 
 var lockOne = new puzzle(
+"locked steel door", //name
+"You try the door but its locked...", //description
+null, //solution
+false // solved
     
-
-
 )
 
 /*
 Template 
-    //
+    //name
+    //solution
+    //solved
 
 
 

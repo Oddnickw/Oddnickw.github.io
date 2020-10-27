@@ -14,7 +14,6 @@ var previousCommands = {
 
 window.onload = function () {
   println("<img src='gamescreen.png'>");
-  console.log(player.location());
   roomUnpacker();
 
   document.querySelector("#command").onkeypress = function (e) {

@@ -80,6 +80,14 @@ function span(name, text){
 function println(line, dontPrintPTags){
 	line = dontPrintPTags ? line : "<p>"+line+"</p>"
     document.querySelector("#results").innerHTML += (line);
+    scrollToBottom();
+}
+
+function printImage(src, additionalOptions){
+	println("<img onload='scrollToBottom()' src='"+src+"' "+additionalOptions+">");
+}
+
+function scrollToBottom(){
     document.querySelector("#results").scrollTop = document.querySelector("#results").scrollHeight;
 }
 

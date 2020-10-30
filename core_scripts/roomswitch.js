@@ -1,4 +1,6 @@
 var player = {
+    inventory: [],
+    abilities: [],
     location : function (){
             for (let row = 0; row < playerTrack.length; row++) {
                 for (let column = 0; column < playerTrack.length; column++){
@@ -27,13 +29,40 @@ var player = {
         playerTrack[yCord][xCord-1] = player
         playerTrack[yCord][xCord] = null
     },
-    moveEast: function (){
+    moveEast : function (){
         var yCord = player.location()[0]
         var xCord = player.location()[1]
         playerTrack[yCord][xCord+1] = player
         playerTrack[yCord][xCord] = null
+    },
+    
+    addItem: function(item){
+        this.inventory.push(item)
+    },
+
+    dropItem: function(item){
+        if (this.inventory.find(item) != -1 ){
+            var slot = this.inventory.find(item)
+            
+        }
+    },
+
+    displayInventory: function(){
+        if (this.inventory.length == 0){
+            println("You have nothing... I'm sorry.")
+        }
+        else{
+            var viewItems = []
+            for (let pusher = 0; pusher < this.inventory.length-1; pusher++) {
+                viewItems.push(this.inventory[pusher].name);
+            }
+            if (this.inventory.length > 1){viewItems.push("and " + this.inventory[this.inventory.length-1].name + ".")}
+            else{viewItems.push("a "+this.inventory[0].name)}
+            console.log(viewItems)
+            println("you have " + viewItems.join(" "))
+            }
     }
-    }
+}
 
 
 

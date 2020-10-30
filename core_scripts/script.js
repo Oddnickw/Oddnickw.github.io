@@ -11,7 +11,6 @@ var previousCommands = {
 };
 
 window.onload = function(){
-    
     printImage("gamescreen.png")
     roomUnpacker()
     document.querySelector("#command").onkeypress = function(e){
@@ -68,6 +67,8 @@ function submit(command){
         println("Command '"+words[0]+"' not found. Enter 'help' for a list of commands.")
     }
 }
+
+
 
 function capitalize(string){
     return string.charAt(0).toUpperCase() + string.substring(1);

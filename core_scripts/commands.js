@@ -1,4 +1,23 @@
 commands = {
+    i:{
+        trigger:function(word) {
+            secondHandSubmit("inventory")
+        }
+    },
+    
+    inv:{
+        trigger:function(word) {
+            secondHandSubmit("inventory")
+        }
+    },
+    grab:{
+        trigger:function(word){
+            words = words.join(" ")
+            input = "take " + words
+            console.log(input)
+            secondHandSubmit(input)
+        }  
+    },
     pick:{
         trigger:function(word){
             words.shift()
@@ -220,9 +239,12 @@ commands = {
             console.log(words)
             if (words == "north"){
                 console.log(northRoom().passageNLocked[0])
-                if (northRoom().passageNLocked[0] = false ){    
-                if (player.location()[0] != 0){
+                if (northRoom().passageNLocked[0] == false ){    
+                    console.log("door not locked")
+                    if (player.location()[0] != 0){
+                        console.log("player is in a good spot")
                         if (northRoom() != null){
+                            console.log("there is a room")
                             player.moveNorth()
                             console.log(currentRoom())
                             roomUnpacker()
@@ -234,7 +256,7 @@ commands = {
                     else{ println("there is no room to the North")}
                 
                 }
-                else{println(northRoom().passageNLocked.description)}
+                else{northRoom().passageNLocked[0].getDescription()}
             }
             else if (words == "south"){
                 if (player.location()[0] != 4){

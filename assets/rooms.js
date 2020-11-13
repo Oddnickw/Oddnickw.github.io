@@ -68,8 +68,7 @@ class Room{
         }
         
         
-        if (exits.length != 1){var lastExit = exits.pop()}
-        console.log(exits)
+        
         
         //very clumsy solution for capitalizing first exit
         var firstWord = exits[0].split("")
@@ -86,9 +85,13 @@ class Room{
         else if (this.items.length == 2){viewItems.push(this.items[this.items.length-1].getDescription() + ".")}
 
         //final printing secion
-        exits.length != 1?
-        println(this.description + " "+ exits.join(", ") + ", and " + lastExit + "."):
-        println(this.description + " "+ exits.join(", ") + ".")
+        if (exits.length  >1){
+            var lastExit = exits.pop()
+            println(this.description + " "+ exits.join(", ") + ", and " + lastExit + ".")
+        }else{ 
+            println(this.description + " "+ exits.join(", ") + ".")
+        }
+       
 
         
 
@@ -131,9 +134,9 @@ var starterRoom = new Room(
     "This room looks like an abandon machine shop. The floor is cluttered with tools and scrap metal.", //Description
     ["north", [3,2]], // exits 
     [4,2],//location
-    [true,rustyNail,steelDoor, scrapMetal, crowbar], //items
+    [true,rustyNail,steelDoor, scrapMetal], //items
     null,//passage north
-    "there is a cold and large steel door here",//passage south 
+    "there is a cold and large steel door heading south",//passage south 
     null,//passage West
     "a long passage heads east",//passage East
 
@@ -144,16 +147,15 @@ var lock = [lockOne]
 
 var nextRoom = new Room(
     "boiler Room",//name
-    "This room contains a large boiler and is full of broken chairs",//Description
+    "This room contains a large boiler and is full of broken chairs.",//Description
     null,//exits 
     [3,2],//location
-    [false],//items
+    [true,steelDoor],//items
     "there is a steel door leading north",//passage north
     null,//passage south
     null,//passage West
     null,//passage East
-    lock[0], //passage north locked
-    [false],
+    [lock[0]], //passage north locked
     [false],//passage south locked
     [false],//passage West locked
     [false]//passage East locked

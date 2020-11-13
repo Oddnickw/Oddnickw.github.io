@@ -5,7 +5,13 @@ class puzzle {
         this.solution = solution
         this.solved= solved // always created as false changed to true by solved()
     }
+
+    getDescription() {
+        println(this.description)
+    }
+
 }
+
 
 
 var lockOne = new puzzle(

@@ -85,7 +85,11 @@ var steelDoor = new gameObject(
     "The door has a small fragile lock on it.",
     function comboUse(secondItem){
         if (secondItem == crowbar){
-            println("you try the crowbar on the door and here a creek")
+            if (northRoom().passageNLocked[0] != false){ 
+                println("You try the crowbar on the door and the lock snaps and falls to the floor.")
+                this.lookDescription = "This door used to have a steel lock on it. It's now broken and on the ground."
+                northRoom().passageNLocked[0] = false
+            }else{println("The lock is already broken.")}
         }
     }
 

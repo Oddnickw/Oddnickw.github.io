@@ -11,7 +11,7 @@ var previousCommands = {
 };
 
 window.onload = function(){
-    printImage("gamescreen.png")
+    printImage("DeathintheFuture.png")
     
     roomUnpacker()
     document.querySelector("#command").onkeypress = function(e){
@@ -86,6 +86,8 @@ function println(line, dontPrintPTags){
 }
 
 function printImage(src, additionalOptions){
+    imagePool = "assets/imagepool/"
+    src = imagePool + src 
 	println("<img onload='scrollToBottom()' src='"+src+"' "+additionalOptions+">");
 }
 

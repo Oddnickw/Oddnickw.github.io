@@ -1,16 +1,19 @@
 commands = {
     i:{
+        description: false,
         trigger:function(word) {
             secondHandSubmit("inventory")
         }
     },
     
     inv:{
+        description: false,
         trigger:function(word) {
             secondHandSubmit("inventory")
         }
     },
     grab:{
+        description: false,
         trigger:function(word){
             words = words.join(" ")
             input = "take " + words
@@ -19,6 +22,7 @@ commands = {
         }  
     },
     pick:{
+        description: false,
         trigger:function(word){
             words.shift()
             words = words.join(" ")
@@ -48,7 +52,7 @@ commands = {
         }
     },
     inventory:{
-        description:"Inventory <br> Type inventory to see what you are carrying.",
+        description:"Inventory <br> Type inventory, inv, or i to see what you are carrying.",
         trigger:function(words){
             player.displayInventory()
         }
@@ -56,7 +60,7 @@ commands = {
 
     },
     take:{
-        description:"Take <br> Type take to take an object into your invetory",
+        description:"Take <br> Type take, grab, or pick up to take an object into your invetory",
         trigger:function(words){
             words = words.join(" ")
             var itemNames = []
@@ -316,7 +320,9 @@ commands = {
             if(!words.length){
                 let result = "";
                 for(let key in commands){
+                    if (commands[key].description != false){
                     result+= "<p>"+commands[key].description+"</p>";
+                    }
                 }
                 println(result);
             }

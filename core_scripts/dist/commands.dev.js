@@ -1,6 +1,40 @@
 "use strict";
 
 commands = {
+  pick: {
+    trigger: function trigger(word) {
+      words.shift();
+      words = words.join(" ");
+      input = "take " + words;
+      console.log(input);
+      secondHandSubmit(input);
+    }
+  },
+  drop: {
+    description: "Drop <br> Type this to drop an item onto the floor",
+    trigger: function trigger(words) {
+      words = words.join(" ");
+      var itemNames = [];
+
+      for (var index = 0; index < player.inventory.length; index++) {
+        itemNames.push(player.inventory[index].getName());
+      }
+
+      console.log(itemNames);
+
+      if (itemNames.indexOf(words) != -1) {
+        slot = itemNames.indexOf(words);
+        currentRoom().addItem(player.inventory[slot]);
+        player.dropItem(slot);
+
+        if (currentRoom().items[0] == false) {
+          currentRoom().items[0] = true;
+        }
+
+        println("You drop " + words);
+      }
+    }
+  },
   inventory: {
     description: "Inventory <br> Type inventory to see what you are carrying.",
     trigger: function trigger(words) {
@@ -22,6 +56,16 @@ commands = {
       if (itemNames.indexOf(words) != -1) {
         slot = itemNames.indexOf(words) + 1;
         player.addItem(currentRoom().items[slot]);
+
+        if (currentRoom().items.length == 1) {
+          currentRoom().items[0] = false;
+        }
+
+        if (currentRoom().items[slot].canPickUp == true) {
+          currentRoom().removeItem(slot);
+        }
+      } else {
+        println("There is no " + words + " to take!");
       }
     }
   },
@@ -35,11 +79,20 @@ commands = {
         itemNames.push(currentRoom().items[index].getName());
       }
 
+      var inventoryList = [];
+
+      for (var finder = 0; finder < player.inventory.length; finder++) {
+        inventoryList.push(player.inventory[finder].getName());
+      }
+
       console.log(itemNames);
 
       if (itemNames.indexOf(words) != -1) {
         slot = itemNames.indexOf(words) + 1;
-        println(currentRoom().items[slot].getLook());
+        currentRoom().items[slot].getLook();
+      } else if (inventoryList.indexOf(words) != -1) {
+        slot = inventoryList.indexOf(words);
+        player.inventory[slot].getLook();
       } else if (words == "") {
         roomUnpacker();
       }
@@ -48,27 +101,128 @@ commands = {
   use: {
     description: "Use <br> Type use followed by an object in the room to attempt to use it",
     trigger: function trigger(words) {
-      words = words.join(" ");
-      var itemNames = [];
+      if (words.indexOf("on") == -1) {
+        words = words.join(" ");
+        var itemNames = [];
 
-      for (var index = 1; index < currentRoom().items.length; index++) {
-        itemNames.push(currentRoom().items[index].getName());
-      }
-
-      console.log(itemNames);
-
-      if (itemNames.indexOf(words) != -1) {
-        slot = itemNames.indexOf(words) + 1;
-
-        if (currentRoom().items[slot] instanceof gimicObject) {
-          println(currentRoom().items[slot].getUseDescription());
-        } else {
-          currentRoom().items[slot].useFunction();
+        for (var index = 1; index < currentRoom().items.length; index++) {
+          itemNames.push(currentRoom().items[index].getName());
         }
-      } else if (words == "door") {
-        println("So, ya wanna use a door? Which one? Buco...");
+
+        var inventoryList = [];
+
+        for (var finder = 0; finder < player.inventory.length; finder++) {
+          inventoryList.push(player.inventory[finder].getName());
+        }
+
+        console.log(itemNames);
+
+        if (itemNames.indexOf(words) != -1 || inventoryList.indexOf(words) != -1) {
+          var slot = itemNames.indexOf(words) + 1;
+          var inventorySlot = inventoryList.indexOf(words);
+
+          if (currentRoom().items[slot] == player.inventory[inventorySlot]) {
+            item = player.inventory[inventorySlot];
+          } else if (currentRoom().items[slot].name == words) {
+            console.log("yee");
+            item = currentRoom().items[slot];
+          } else {
+            item = player.inventory[inventorySlot];
+            console.log("purple");
+          }
+
+          if (item instanceof gimicObject) {
+            //plz fix
+            println(item.getUseDescription());
+          } else {
+            item.useFunction();
+          }
+        } else if (words == "door") {
+          println("So, ya wanna use a door? Which one? Buco...");
+        } else {
+          println("there is no " + words + " in this room" + " <br> Try looking for the capitalized words in the description!");
+        }
       } else {
-        println("there is no " + words + " in this room" + " <br> Try looking for the capitalized words in the description!");
+        var divider = words.indexOf("on");
+        firstItem = words.slice(0, divider);
+        secondItem = words.slice(divider + 1);
+        firstItem = firstItem.join(" ");
+        secondItem = secondItem.join(" ");
+        console.log(firstItem);
+        console.log(secondItem);
+        var firstItemNames = [];
+
+        for (var _index = 1; _index < currentRoom().items.length; _index++) {
+          firstItemNames.push(currentRoom().items[_index].getName());
+        }
+
+        var firstInventoryList = [];
+
+        for (var _finder = 0; _finder < player.inventory.length; _finder++) {
+          firstInventoryList.push(player.inventory[_finder].getName());
+        }
+
+        if (firstItemNames.indexOf(firstItem) != -1 || firstInventoryList.indexOf(firstItem) != -1) {
+          console.log("wee");
+          var firstItemPresent = true;
+        }
+
+        var secondItemNames = [];
+
+        for (var _index2 = 1; _index2 < currentRoom().items.length; _index2++) {
+          secondItemNames.push(currentRoom().items[_index2].getName());
+        }
+
+        var secondInventoryList = [];
+
+        for (var _finder2 = 0; _finder2 < player.inventory.length; _finder2++) {
+          secondInventoryList.push(player.inventory[_finder2].getName());
+        }
+
+        if (secondItemNames.indexOf(secondItem) != -1 || secondInventoryList.indexOf(secondItem) != -1) {
+          console.log("wee");
+          var secondItemPresent = true;
+        }
+
+        if (firstItemPresent == true && secondItemPresent == true) {
+          console.log("yee yee");
+
+          if (firstItemNames.indexOf(firstItem) != -1 || firstInventoryList.indexOf(firstItem) != -1) {
+            var slot = firstItemNames.indexOf(firstItem) + 1;
+            var inventorySlot = firstInventoryList.indexOf(firstItem);
+
+            if (currentRoom().items[slot] == player.inventory[inventorySlot]) {
+              firstItem = player.inventory[inventorySlot];
+            } else if (currentRoom().items[slot].name == firstItem) {
+              console.log("yee");
+              firstItem = currentRoom().items[slot];
+            } else {
+              firstItem = player.inventory[inventorySlot];
+              console.log("purple");
+            }
+
+            if (secondItemNames.indexOf(secondItem) != -1 || secondInventoryList.indexOf(secondItem) != -1) {
+              var slot = secondItemNames.indexOf(secondItem) + 1;
+              var inventorySlot = secondInventoryList.indexOf(secondItem);
+
+              if (currentRoom().items[slot] == player.inventory[inventorySlot]) {
+                secondItem = player.inventory[inventorySlot];
+              } else if (currentRoom().items[slot].name == secondItem) {
+                console.log("yee");
+                secondItem = currentRoom().items[slot];
+              } else {
+                secondItem = player.inventory[inventorySlot];
+                console.log("purple");
+              }
+
+              console.log(firstItem);
+              console.log(secondItem);
+              firstItem.comboUse(secondItem);
+            } else {
+              println("One of those two objects is not usable. Make sure they are in the room or your inventory!");
+            }
+          }
+        }
       }
     }
   },

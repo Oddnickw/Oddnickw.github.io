@@ -37,14 +37,24 @@ var player = {
     playerTrack[yCord][xCord] = null;
   },
   addItem: function addItem(item) {
-    this.inventory.push(item);
-  },
-  dropItem: function dropItem(item) {
-    if (this.inventory.find(item) != -1) {
-      var slot = this.inventory.find(item);
+    if (this.inventory.length < 6) {
+      if (item.canPickUp == true) {
+        this.inventory.push(item);
+        println("You take " + words.join(" ") + ".");
+      } else {
+        println(item.canPickUp);
+      }
     }
   },
+  dropItem: function dropItem(slot) {
+    this.inventory[slot] = " ";
+    this.inventory = this.inventory.filter(function (str) {
+      return /\S/.test(str);
+    });
+  },
   displayInventory: function displayInventory() {
+    console.log(this.inventory);
+
     if (this.inventory.length == 0) {
       println("You have nothing... I'm sorry.");
     } else {
@@ -60,8 +70,8 @@ var player = {
         viewItems.push("a " + this.inventory[0].name);
       }
 
-      console.log(viewItems);
-      println("you have " + viewItems.join(" "));
+      console.log(this.inventory);
+      println("You have " + viewItems.join(", "));
     }
   }
 }; //player tracker 

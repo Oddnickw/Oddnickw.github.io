@@ -11,19 +11,22 @@ function secondHandSubmit(command){
     }
 }
 class gameObject{
-    constructor(name, description, canPickUp, useFunction, lookDescription){
+    constructor(name, description, canPickUp, useFunction, lookDescription,comboUse,picture){
         this.name = name 
         this.description = description
         this.canPickUp = canPickUp
         this.useFunction=useFunction
         this.lookDescription = lookDescription
-
+        this.comboUse = comboUse
+        this.picture = picture
     }
      
     displayObject(){
         println(this.name)
         println(this.description)
     }
+
+
 
     getName(){
         return this.name
@@ -34,14 +37,22 @@ class gameObject{
     }
 
     getLook(){
-        return this.lookDescription
+        if (this.picture != null){
+            console.log("yee")
+            printImage(this.picture)
+            println(this.lookDescription)
+        }else{
+            console.log("no")
+            println (this.lookDescription)
+        }
+        
     }
 
 }
 
 class gimicObject extends gameObject{
-    constructor(name, description, canPickUp, useFunction,useDescription, lookDescription){
-        super(name,description,canPickUp,useFunction,lookDescription)  
+    constructor(name, description, canPickUp, useFunction,useDescription, lookDescription, comboUse){
+        super(name,description,canPickUp,useFunction,lookDescription,comboUse)  
         this.useDescription = useDescription
     }
     getUseDescription(){
@@ -57,7 +68,11 @@ var rustyNail = new gimicObject(
     true,//canPickUp if you can set to true, otherwise put a discription of why...
     null,
     "You cannot think of a use for a broken rusted nail...",//maybe gimic useDescription
-    "It is an old broken nail, entirely useless."
+    "It is an old broken nail, entirely useless.",
+    null,
+    function comboUse(secondItem){
+        "There is nothing you can do with this nail"
+    }
 
 )
 
@@ -66,8 +81,13 @@ var steelDoor = new gameObject(
     "a Steel Door to the north",//description
     "This is a steel door... you cannot take it",//canPickUp if you can set to true, otherwise put a discription of why...
     function useFunction()//useFunction  
-    {doorUser("north")},
-    "The door has a small fragile lock on it."
+    {doorUser("north")},//
+    "The door has a small fragile lock on it.",
+    function comboUse(secondItem){
+        if (secondItem == crowbar){
+            println("you try the crowbar on the door and here a creek")
+        }
+    }
 
 )
 
@@ -76,9 +96,24 @@ var scrapMetal = new gameObject(
     "some Scrap Metal on the floor",//description
     "There is way to much metal to take",//canPickUp if you can set to true, otherwise put a discription of why...
     null,//useFunction
-    "This scrap metal is old and rusted, it looks like it is of little use."
+    "This scrap metal is old and rusted, it looks like it is of little use.",
+    null
 )
 
+var crowbar = new gameObject(
+    "crowbar",
+    "a Crowbar",
+    true,
+    function useFunction(){
+        println("This is a useful item but not by it self")
+    },
+    "The crowbar is blue and has a red top.",
+    function comboUse(secondItem) {
+        console.log("adfaas")
+        crowbarUses(secondItem)
+    },
+    "crowbar.png"
+)
 
 
 
@@ -91,6 +126,7 @@ var scrapMetal = new gameObject(
     //useFunction
     //maybe gimic useDescription
     // detailed desc.
+    // use with map
 */
 
 //functions
@@ -114,3 +150,11 @@ function gimicUse(object){
     console.log(object)
     println(object.useDescription)
 }
+
+
+function crowbarUses(secondItem){
+    secondItem.comboUse(crowbar)
+
+}
+
+

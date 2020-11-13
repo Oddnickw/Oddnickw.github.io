@@ -37,17 +37,27 @@ var player = {
     },
     
     addItem: function(item){
-        this.inventory.push(item)
+        if (this.inventory.length < 6){
+            if (item.canPickUp == true){
+                this.inventory.push(item)
+                println("You take " + words.join(" ") + ".")
+            }
+            else{
+                println(item.canPickUp)
+            }
+        }
+        
     },
 
-    dropItem: function(item){
-        if (this.inventory.find(item) != -1 ){
-            var slot = this.inventory.find(item)
-            
-        }
+    dropItem(slot){
+        this.inventory[slot] = " "
+        this.inventory = this.inventory.filter(function(str) {
+            return /\S/.test(str);
+        });
     },
 
     displayInventory: function(){
+        console.log(this.inventory)
         if (this.inventory.length == 0){
             println("You have nothing... I'm sorry.")
         }
@@ -58,8 +68,8 @@ var player = {
             }
             if (this.inventory.length > 1){viewItems.push("and " + this.inventory[this.inventory.length-1].name + ".")}
             else{viewItems.push("a "+this.inventory[0].name)}
-            console.log(viewItems)
-            println("you have " + viewItems.join(" "))
+            console.log(this.inventory)
+            println("You have " + viewItems.join(", "))
             }
     }
 }

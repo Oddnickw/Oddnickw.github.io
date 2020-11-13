@@ -37,6 +37,14 @@ function () {
       this.items.push(drop);
     }
   }, {
+    key: "removeItem",
+    value: function removeItem(slot) {
+      this.items[slot] = " ";
+      this.items = this.items.filter(function (str) {
+        return /\S/.test(str);
+      });
+    }
+  }, {
     key: "displayRoom",
     value: function displayRoom() {
       //information needed for the exit finder
@@ -96,8 +104,10 @@ function () {
         viewItems.push(this.items[pusher].getDescription());
       }
 
-      if (this.items.length > 1) {
+      if (this.items.length > 2) {
         viewItems.push("and " + this.items[this.items.length - 1].getDescription() + ".");
+      } else if (this.items.length == 2) {
+        viewItems.push(this.items[this.items.length - 1].getDescription() + ".");
       } //final printing secion
 
 
@@ -139,7 +149,7 @@ var starterRoom = new Room("Starting room", //name
 "This room looks like an abandon machine shop. The floor is cluttered with tools and scrap metal.", //Description
 ["north", [3, 2]], // exits 
 [4, 2], //location
-[true, rustyNail, steelDoor, scrapMetal], //items
+[true, rustyNail, steelDoor, scrapMetal, crowbar], //items
 null, //passage north
 "there is a cold and large steel door here", //passage south 
 null, //passage West
@@ -154,7 +164,7 @@ null, //exits
 null, //passage south
 null, //passage West
 null, //passage East
-//lock[0], //passage north locked
+lock[0], //passage north locked
 [false], [false], //passage south locked
 [false], //passage West locked
 [false] //passage East locked
@@ -163,7 +173,7 @@ var testRoom = new Room("Test Chamber", //name
 "A evil looking test chamber sprawls out before you.", //Description
 null, //exits 
 [3, 2], //location
-[false], //items
+[true, crowbar], //items
 null, //passage north
 null, //passage south
 "a long coridor winds off to the west", //passage West

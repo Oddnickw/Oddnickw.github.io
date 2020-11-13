@@ -146,7 +146,7 @@ function () {
 
 
 var starterRoom = new Room("Starting room", //name
-"This room looks like an abandon machine shop. The floor is cluttered with tools and scrap metal.", //Description
+"This room looks like an abandoned machine shop. The floor is cluttered with tools and scrap metal.", //Description
 ["north", [3, 2]], // exits 
 [4, 2], //location
 [true, rustyNail, steelDoor, scrapMetal], //items

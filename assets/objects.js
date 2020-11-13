@@ -38,7 +38,7 @@ class gameObject{
 
     getLook(){
         if (this.picture != null){
-            console.log("yee")
+            console.log(this.picture)
             printImage(this.picture)
             println(this.lookDescription)
         }else{
@@ -46,6 +46,10 @@ class gameObject{
             println (this.lookDescription)
         }
         
+    }
+
+    comboFail(){
+        println ("you cannot use " + secondItem.name + " on " + this.name + ".")
     }
 
 }
@@ -90,7 +94,7 @@ var steelDoor = new gameObject(
                 this.lookDescription = "This door used to have a steel lock on it. It's now broken and on the ground."
                 northRoom().passageNLocked[0] = false
             }else{println("The lock is already broken.")}
-        }
+        }else{this.comboFail}
     }
 
 )
@@ -113,7 +117,6 @@ var crowbar = new gameObject(
     },
     "The crowbar is blue and has a red top.",
     function comboUse(secondItem) {
-        console.log("adfaas")
         crowbarUses(secondItem)
     },
     "crowbar.png"

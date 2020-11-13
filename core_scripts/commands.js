@@ -71,10 +71,10 @@ commands = {
             if (itemNames.indexOf(words) != -1){
                 slot = itemNames.indexOf(words) + 1
                 player.addItem(currentRoom().items[slot])
-                if (currentRoom().items.length == 1){currentRoom().items[0] = false}
                 if (currentRoom().items[slot].canPickUp ==true){
                     currentRoom().removeItem(slot)
                 }
+                if (currentRoom().items.length == 1){currentRoom().items[0] = false}
             
 
         }else{println("There is no " + words + " to take!")}
@@ -110,6 +110,8 @@ commands = {
             }
             else if (words == ""){
                 roomUnpacker()
+            }else{
+                println("You don't see " + words + " here or on you.")
             }
         }
 
@@ -117,7 +119,7 @@ commands = {
     },
 
     use: {
-        description: "Use <br> Type use followed by an object in the room to attempt to use it",
+        description: "Use <br> Type use followed by an object in the room to attempt to use it. If you type \" use object on object \" you will attempt to use the first object on the second.",
         trigger: function(words){
             if (words.indexOf("on") == -1){
                 words = words.join(" ")

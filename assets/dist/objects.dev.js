@@ -65,13 +65,18 @@ function () {
     key: "getLook",
     value: function getLook() {
       if (this.picture != null) {
-        console.log("yee");
+        console.log(this.picture);
         printImage(this.picture);
         println(this.lookDescription);
       } else {
         console.log("no");
         println(this.lookDescription);
       }
+    }
+  }, {
+    key: "comboFail",
+    value: function comboFail() {
+      println("you cannot use " + secondItem.name + " on " + this.name + ".");
     }
   }]);
 
@@ -126,6 +131,8 @@ function useFunction() //useFunction
     } else {
       println("The lock is already broken.");
     }
+  } else {
+    this.comboFail;
   }
 });
 var scrapMetal = new gameObject("scrap metal", //name
@@ -136,7 +143,6 @@ null, //useFunction
 var crowbar = new gameObject("crowbar", "a Crowbar", true, function useFunction() {
   println("This is a useful item but not by it self");
 }, "The crowbar is blue and has a red top.", function comboUse(secondItem) {
-  console.log("adfaas");
   crowbarUses(secondItem);
 }, "crowbar.png");
 /* Template

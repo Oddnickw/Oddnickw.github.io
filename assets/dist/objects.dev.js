@@ -128,6 +128,7 @@ function useFunction() //useFunction
       println("You try the crowbar on the door and the lock snaps and falls to the floor.");
       this.lookDescription = "This door used to have a steel lock on it. It's now broken and on the ground.";
       northRoom().passageNLocked[0] = false;
+      printImage("lockbreakwithdoor.gif");
     } else {
       println("The lock is already broken.");
     }

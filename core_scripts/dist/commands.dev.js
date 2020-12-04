@@ -246,6 +246,8 @@ commands = {
               println("One of those two objects is not usable. Make sure they are in the room or your inventory!");
             }
           }
+        } else {
+          println("One of those two objects is not usable. Make sure they are in the room or your inventory!");
         }
       }
     }

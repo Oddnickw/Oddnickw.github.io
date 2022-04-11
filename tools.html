@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Programming at bensigal.com</title>
+        <link rel="stylesheet" type="text/css" href="/home.css">
+        <script src="/jquery.min.js"></script>
+        <script>
+            $(function(){
+                $("#gitHubItem").click(function(){
+                    location.href="https://github.com/bensigal/bensigal.com";
+                });
+                $("#editorItem").click(function(){
+                    location.href="/edit/";
+                });
+                $("#postToolItem").click(function(){
+                    location.href="/server/post.html";
+                });
+                $("#trailblazerItem").click(function(){
+                    location.href="/trailblazer";
+                });
+            });
+        </script>
+    </head>
+    <body>
+		<div id="logoHolder">
+			<a href="/">
+				<img id="logo" src="images/logo.png">
+			</a>
+		</div>
+		<div id="navigation">
+			<a href="/">
+				<div class="rightBorder">Home</div>
+			</a>
+			<a href="/games">
+				<div class="rightBorder">Games</div>
+			</a>
+			<a href="/tools">
+				<div id="toolsDiv">Tools/Programming</div>
+			</a>
+		</div>
+        <div id="all">
+            <div class="item" id="gitHubItem">
+                <div class="itemDescription">
+                    <p class="itemHeader">
+                        GitHub
+                    </p>
+                    <p class="itemFinerDescription">
+                        Look at the source code for this website at GitHub.
+                    </p>
+                </div>
+                <img src="/images/github.png" class="middlePicture">
+            </div>
+            <div class="item" id="editorItem">
+                <img src="/images/editor.png" class="middlePicture">
+                <div class="itemDescription">
+                    <p class="itemHeader">
+                        Editor
+                    </p>
+                    <p class="itemFinerDescription">
+                        A text editor used to edit files on this website. This feature is available only to users with a login.
+                    </p>
+                </div>
+            </div>
+            <div class="item" id="postToolItem">
+                <div class="itemDescription">
+                    <p class="itemHeader">
+                        Post Tools
+                    </p>
+                    <p class="itemFinerDescription">
+                        Send post requests to other pages on this website. This tool is unlikely to be very useful to anyone who does not have a login. Additionally, an intuitive user interface has not yet been added.
+                    </p>
+                </div>
+                <img src="/images/posttool.png" class="middlePicture">
+            </div>
+            <div class="item" id="trailblazerItem">
+                <img src="/images/trailblazer.png" class="middlePicture">
+                <div class="itemDescription">
+                    <p class="itemHeader">
+                        Trailblazer
+                    </p>
+                    <p class="itemFinerDescription">
+                        A tool used to facilitate an old, cumbersome board game called Trailblazer. It keeps track of the goods produced on each star, and calculates demand, etc. The physical game is still required to play, however.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

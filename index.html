@@ -1,79 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Death In The Future</title>
-        <script src="core_scripts/commands.js" charset="UTF-8"></script>
-        <script src="core_scripts/script.js"></script>
-        <script src="assets/objects.js"></script>
-        <script src="assets/puzzle.js"></script>
-        <script src = "assets/rooms.js"></script>
-        <script src = "core_scripts/roomswitch.js"></script>
-        
-        
-        <style>
-            #main{
-                width: 800px;
-                margin: 30px auto;
-               
-            }
-            #results{
-                height: 600px;
-                width: 798px;
-                overflow-y: scroll;
-                overflow-x: hidden;
-                font-family: monospace, "Monaco", monospace;
-                border: 1px solid black;
-                border-left: 10px;
-                word-wrap: break-word;
-                color: #33ff33;
-                background-color:#000000;
-                font-size: 14px;
-            }
-            #results img{
-                margin-left: 10px;
-
-            }
-            #results p{
-                margin-left: 10px;
-                display: block;
-                width: auto;
-            }
-            #command{
-                width: 793px;
-                margin: 0 auto;
-                color: #33ff33;
-                background-color:#000000;
-            }
-			
-            .enterCommand, .echoCommand{
-                color: #33ff33;
-                font-weight: 701;
-                background-color: #000000;
-            }
-            .attr{
-                color: #080;
-                font-weight: 700;
-            }
-            .generatedTable{
-                border-collapse: collapse;
-            }
-            .generatedTable td{
-                border: 1px solid black;
-                text-align: center;
-                padding: 5px;
-            }
-            body{
-                color: #33ff33;
-                background-color:#333333;   
-            }
-        </style>
+        <title>bensigal.com</title>
+        <link rel="stylesheet" type="text/css" href="home.css">
+        <script src="/jquery.min.js"></script>
+		<script>
+			$(function(){
+				$("#resumeItem").click(function(){
+					location.href = "/resume.pdf";
+				});
+			});
+		</script>
     </head>
     <body>
-        <div id="main">
-            <div id="results">
-                <br><br>
+		<div id="logoHolder">
+			<a href="/">
+				<img id="logo" src="images/logo.png">
+			</a>
+		</div>
+		<!--<div>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="games.html">Games</a></li>
+				<li><a href="tools.html">Tools</a></li>
+			</ul>
+		</div>-->
+		<div id="navigation">
+			<div id ="centerer">
+				<a href="/">
+					<div id = "home" class="rightBorder">Home</div>
+				</a>
+				<a href="games.html">
+					<div class="rightBorder">Games</div>
+				</a>
+				<a href="/tools">
+					<div id="toolsDiv">Tools/Programming</div>
+				</a>
+				<a href "/test">
+					<div id="test">thjlasdfljafjklhasdfjk</div>
+				</a>
+			</div>
+		</div>
+        <div id="all">
+            <div class="item no_hover">
+                <div class="itemDescription">
+                    <p class="itemHeader">
+                        About Me
+                    </p>
+                    <p class="itemFinerDescription">
+                        Benjamin Sigal is a student at UCLA for Electrical Engineering in the Class of 2023. He maintains this website for fun, hosting simple games and other small coding projects on it.
+                    </p>
+                </div>
+                <img src="frontpage.jpg" class="middlePicture">
             </div>
-            <input id="command" type="text" placeholder="Enter command..." autofocus>
         </div>
     </body>
 </html>

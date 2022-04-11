@@ -1,0 +1,110 @@
+/* made by Ben Sigal  */
+body{
+	margin: 0;
+	background-color: grey;
+}
+
+li{
+	display: inline;
+}
+#all{
+	margin: 20px auto;
+	width: 760px;
+}
+.item{
+	background-color: white;
+	height: 300px;
+	transition: 0.4s;
+	padding: 30px;
+}
+.item:not(.no_hover):hover{
+	background-color: #EEE;
+	cursor: pointer;
+}
+.middlePicture{
+	float: left;
+	width: 400px;
+	height: 300px;
+}
+.itemDescription{
+	float: left;
+	width: 240px;
+	margin: 0 30px;
+	text-align: justify;
+	font-family: "Ubuntu", Arial, sans-serif;
+}
+.itemHeader{
+	font-size: 26px;
+	text-align: center;
+}
+a *:hover{
+	font-size: 16px;
+}
+
+#logo{
+	width: 700px;
+	height: 155px;
+	display: block;
+	margin: 0 auto;
+}
+#navigation{
+	width: 100%;
+	margin: 0 auto;
+	height: 75px;
+	font-size: 14px;
+	font-family: "Ubuntu", Arial, sans-serif;
+	background-color: #222;
+	align-items: center;
+}
+#centerer div{
+	width: 252px;
+	margin: 0 auto;
+	height: 100%;
+	color: #F0F0F0;
+	text-align: center;
+	text-decoration: none;
+	font-size: 24px;
+	line-height: 60px;
+	float: left;
+	align-content: center;
+	
+}
+/*All navigation divs except the last*/
+.rightBorder{
+	border-right: 1px solid #666;
+}
+
+
+#centerer{
+	margin: 0 auto;
+	width: 1011px;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+#toolsDiv {
+	background-color:#420;
+}
+
+#home{
+	border-left: 100px;
+}
+
+#logoHolder a{
+	display: block;
+	width: 700px;
+	margin: 0 auto;
+}
+#navigation *:hover{
+	transition: 0.3s;
+	background-color: #444;
+}
+#navigation *:active{
+	transition: 0.3s;
+	background-color: rgb(172, 51, 51);
+}

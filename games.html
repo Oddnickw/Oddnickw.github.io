@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Games at bensigal.com</title>
+        <link rel="stylesheet" type="text/css" href="home.css">
+        <script src="/jquery.min.js"></script>
+        <script>
+            $(function(){
+                $("#snakeItem").click(function(){
+                    location.href="/snake/";
+                });
+                $("#paintItem").click(function(){
+                    location.href="/paint/";
+                });
+                $("#gameItem").click(function(){
+                    location.href="/game/";
+                });
+                $("#zoneItem").click(function(){
+                    location.href="/zone/";
+                });
+                $("#circleItem").click(function(){
+                    location.href="/circle/";
+                });
+                $("#poloniusItem").click(function(){
+                    location.href="/polonius/";
+                });
+            });
+        </script>
+    </head>
+    <body>
+		<div id="logoHolder">
+			<a href="/">
+				<img id="logo" src="images/logo.png">
+			</a>
+		</div>
+		<div id="navigation">
+			<a href="/">
+				<div class="rightBorder">Home</div>
+			</a>
+			<a href="/games">
+				<div class="rightBorder">Games</div>
+			</a>
+			<a href="/tools">
+				<div id="toolsDiv">Tools/Programming</div>
+			</a>
+		</div>
+        <div id="all">
+            <div class="item" id="poloniusItem">
+                <div class="itemDescription">
+                    <p class="itemHeader">
+                        Polonius
+                    </p>
+                    <p class="itemFinerDescription">
+                        Play a short series of two minigames based on the events in Hamlet from the perspective of Polonius. Created for an English project due 11/29/18.
+                    </p>
+                </div>
+                <img src="/images/polonius.png" class="middlePicture">
+            </div>
+            <div class="item" id="circleItem">
+                <img src="/images/circle.png" class="middlePicture">
+                <div class="itemDescription">
+                    <p class="itemHeader">
+                        Circle
+                    </p>
+                    <p class="itemFinerDescription">
+                        Control a large circle, with a small circle orbiting you. Avoid the lines, which can be destroyed with the small circle.
+                    </p>
+                </div>
+            </div>
+            <div class="item" id="zoneItem">
+                <div class="itemDescription">
+                    <p class="itemHeader">
+                        Zone
+                    </p>
+                    <p class="itemFinerDescription">
+                        A multiplayer game based off of capture the flag. Instructions are not included.
+                    </p>
+                </div>
+                <img src="/images/zone.png" class="middlePicture">
+            </div>
+            <div class="item" id="snakeItem">
+                <img src="/images/snake.png" class="middlePicture">
+                <div class="itemDescription">
+                    <p class="itemHeader">
+                        Snake
+                    </p>
+                    <p class="itemFinerDescription">
+                        Eat the blue squares to grow longer. Use the arrow keys to move while avoiding running into the walls or yourself.<br><br>The current verified high score is 720 by Ben Sigal.
+                    </p>
+                </div>
+            </div>
+            <div class="item" id="paintItem">
+                <div class="itemDescription">
+                    <p class="itemHeader">
+                        Paint
+                    </p>
+                    <p class="itemFinerDescription">
+                        A game based off of capture the flag. Instructions are included.
+                    </p>
+                </div>
+                <img src="/images/paint.png" class="middlePicture">
+            </div>
+            <div class="item" id="gameItem">
+                <img src="/images/game.png" class="middlePicture">
+                <div class="itemDescription">
+                    <p class="itemHeader">
+                        Game
+                    </p>
+                    <p class="itemFinerDescription">
+                        Using the arrow keys to move, avoid the red rectangles, using the green powerups to help you on your way. A second player can use WASD to have an invincible blue rectangle slowly chase after player 1.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

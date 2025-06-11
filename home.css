@@ -27,3 +27,6 @@ body {
     text-align: left;
     background-color:#f7f3e6;
   }
+  .text .email{
+    color: blue;
+  }

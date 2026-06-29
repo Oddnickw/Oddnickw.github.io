@@ -119,7 +119,7 @@ commands = {
     },
 
     use: {
-        description: "Use <br> Type use followed by an object in the room to attempt to use it. If you type \" use object on object \" you will attempt to use the first object on the second.",
+        description: "Use <br> Type use followed by an object in the room to attempt to use it",
         trigger: function(words){
             if (words.indexOf("on") == -1){
                 words = words.join(" ")
@@ -233,8 +233,6 @@ commands = {
                     println("One of those two objects is not usable. Make sure they are in the room or your inventory!")
                 }
             }
-        }else{
-            println("One of those two objects is not usable. Make sure they are in the room or your inventory!")
         }
     }
 

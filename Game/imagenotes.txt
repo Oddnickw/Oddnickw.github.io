@@ -1,0 +1,6 @@
+Image size for room images
+
+745x501
+
+Image size for items 
+width 150 maintian ratio! 

@@ -1,7 +1,6 @@
 
-//"a rusty nail", "a steel door to the north", "some scrap metal on the floor"
 class Room{
-    constructor(name, description,exits, location, items,passageN,passageS,passageW,passageE,passageNLocked,passageSLocked,passageWLocked,passageELocked){
+    constructor(name, description,exits, location, items ,passageN,passageS,passageW,passageE,passageNLocked,passageSLocked,passageWLocked,passageELocked){
         this.name = name
         this.description = description
         this.exits = exits
@@ -16,87 +15,48 @@ class Room{
         this.passageWLocked = passageWLocked// puzzle object goes here
         this.passageELocked = passageELocked// puzzle object goes here
     }
-
-    addItem(drop){
-        this.items.push(drop)
-    }
-
-    removeItem(slot){
-        this.items[slot] = " "
-        this.items = this.items.filter(function(str) {
-            return /\S/.test(str);
-        });
-    }
-
     displayRoom(){
-        //information needed for the exit finder
-        
+        println(this.description )
         var lat =  this.getRoomLocation()[0]
         var long = this.getRoomLocation()[1]
-        var exits = []
         console.log(lat)
         console.log(long)
-        
-        //finds exits
         if (lat !=0) { 
             if ( map[lat - 1][long] != null){
                 if (map[lat - 1][long].passageN != null){
-                    exits.push(map[lat - 1][long].passageN)
+                println (map[lat - 1][long].passageN)
                 }
             }
         }
         if (lat !=4) {
             if ( map[lat + 1][long] != null){
             if (map[lat + 1][long].passageS != null){
-                exits.push(map[lat + 1][long].passageS)
+                println (map[lat + 1][long].passageS)
                 }
             }
             }
         if (long != 0) {
             if (map[lat][long-1] != null){
                 if (map[lat][long-1].passageW != null){
-                    exits.push(map[lat][long -1 ].passageW)
+                println (map[lat][long -1 ].passageW)
                 }
             } 
         }
         if (long != 4) {
             if (map[lat][long+1] != null){
                 if (map[lat][long+1].passageE != null ){
-                    exits.push(map[lat][long + 1].passageE)
+                println (map[lat][long + 1].passageE)
                 }
             }
         }
         
-        
-        
-        
-        //very clumsy solution for capitalizing first exit
-        var firstWord = exits[0].split("")
-        var firstLetter = firstWord.shift()
-        firstWord = firstWord.join("")
-        firstLetter = firstLetter.toUpperCase()
-        exits[0] = firstLetter.concat("",firstWord)
-        //extracts items in the room to be suitable for printing, takes off last one to add " and "
         var viewItems = []
+        
         for (let pusher = 1; pusher < this.items.length-1; pusher++) {
-            viewItems.push(this.items[pusher].getDescription());
+            viewItems.push(this.items[pusher]);
         }
-        if (this.items.length > 2){viewItems.push("and " + this.items[this.items.length-1].getDescription() + ".")}
-        else if (this.items.length == 2){viewItems.push(this.items[this.items.length-1].getDescription() + ".")}
-
-        //final printing secion
-        if (exits.length  >1){
-            var lastExit = exits.pop()
-            println(this.description + " "+ exits.join(", ") + ", and " + lastExit + ".")
-        }else{ 
-            println(this.description + " "+ exits.join(", ") + ".")
-        }
-       
-
-        
-
+        viewItems.push("and " + this.items[this.items.length-1] + ".")
         if (this.items[0] != false) {println("In the room you see " + viewItems.join(", "))}
-        
 
     }
 
@@ -131,14 +91,14 @@ class Room{
 //starter room
 var starterRoom = new Room(
     "Starting room", //name
-    "This room looks like an abandoned machine shop. The floor is cluttered with tools and scrap metal.", //Description
+    "This room looks like an abandon machine shop. The floor is cluttered with tools and scrap metal.", //Description
     ["north", [3,2]], // exits 
     [4,2],//location
-    [true,rustyNail,steelDoor, scrapMetal], //items
+    [true,"a rusty nail", "a steel door to the north", "some scrap metal on the floor"], //items
     null,//passage north
-    "there is a cold and large steel door heading south",//passage south 
+    "There is a cold and large steel door here",//passage south 
     null,//passage West
-    "a long passage heads east",//passage East
+    null,//passage East
 
 
 );
@@ -147,37 +107,23 @@ var lock = [lockOne]
 
 var nextRoom = new Room(
     "boiler Room",//name
-    "This room contains a large boiler and is full of broken chairs.",//Description
+    "This room contains a large boiler and is full of broken chairs",//Description
     null,//exits 
     [3,2],//location
-    [true,steelDoor],//items
-    "there is a steel door leading north",//passage north
+    [false],//items
+    "There is a steel door leading north",//passage north
     null,//passage south
     null,//passage West
     null,//passage East
-    [lock[0]], //passage north locked
+    lock[0], //passage north locked
     [false],//passage south locked
     [false],//passage West locked
     [false]//passage East locked
 
 );
 
-var testRoom = new Room(
-    "Test Chamber",//name
-    "A evil looking test chamber sprawls out before you.",//Description
-    null,//exits 
-    [3,2],//location
-    [true,crowbar],//items
-    null,//passage north
-    null,//passage south
-    "a long coridor winds off to the west",//passage West
-    "a long coridor winds off to the west",//passage East
-    [false], //passage north locked
-    [false],//passage south locked
-    [false],//passage West locked
-    [false]//passage East locked
-)
-
+console.log(starterRoom.description);
+console.log(starterRoom.exits);
 
 
 
@@ -187,7 +133,7 @@ map = [
     [null,null,null,null,null],
     [null,null,null,null,null],
     [null,null,nextRoom,null,null],
-    [null,testRoom,starterRoom,null,null],
+    [null,null,starterRoom,null,null],
 ]
 console.table(map);
 
@@ -197,7 +143,7 @@ trueMap = [
     [null,null,null,null,null],
     [null,null,null,null,null],
     [null,null,nextRoom,null,null],
-    [null,testRoom,starterRoom,null,null],
+    [null,null,starterRoom,null,null],
 ]
 
 
